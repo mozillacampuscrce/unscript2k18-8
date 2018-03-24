@@ -1,21 +1,36 @@
 package com.codeblooded.chehra.teacher.ui.fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.codeblooded.chehra.teacher.Constants;
 import com.codeblooded.chehra.teacher.R;
 import com.codeblooded.chehra.teacher.models.StudentChat;
 import com.codeblooded.chehra.teacher.ui.adapters.StudentChatListAdapter;
+import com.codeblooded.chehra.teacher.util.RestClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.message.BasicHeader;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +43,8 @@ public class StudentChatListFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private RecyclerView chatsList;
     private TextView emptyView;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private ArrayList<StudentChat> studentChats;
 
     public static StudentChatListFragment newInstance() {
         // Required empty public constructor
@@ -42,6 +59,15 @@ public class StudentChatListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_chat_list, container, false);
         chatsList = rootView.findViewById(R.id.recycler_view_chat_list);
         emptyView = rootView.findViewById(R.id.emptyView);
+        studentChats = new ArrayList<>();
+
+        swipeRefreshLayout = rootView.findViewById(R.id.swiperefresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getStudentsList();
+            }
+        });
         return rootView;
     }
 
@@ -56,7 +82,52 @@ public class StudentChatListFragment extends Fragment {
         }
     }
 
+    public void getStudentsList() {
+        SharedPreferences userPrefs = getActivity().getSharedPreferences(Constants.USER_PREFS, Context.MODE_PRIVATE);
+        Header[] headers = new Header[]{new BasicHeader("Authorization", "JWT " + userPrefs.getString(Constants.TOKEN, ""))};
 
+        RequestParams params = new RequestParams();
+        params.put("teacher_id", userPrefs.getInt(Constants.ID, 0));
+        RestClient.get("course/getByTeacherId/", headers, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                swipeRefreshLayout.setRefreshing(true);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
+                swipeRefreshLayout.setRefreshing(false);
+
+                studentChats.clear();
+
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject item = response.getJSONObject(i);
+                        StudentChat studentChat = new StudentChat();
+                        studentChats.add(studentChat);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                updateUI(studentChats);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                swipeRefreshLayout.setRefreshing(false);
+                try {
+                    Toast.makeText(getActivity(), "Failed to fetch courses\n(" + errorResponse.getString("detail") + ")", Toast.LENGTH_SHORT).show();
+                    Log.e("CourseFragment", errorResponse.toString());
+                } catch (JSONException | NullPointerException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
 
     @Override

@@ -11,7 +11,10 @@ public class StudentChat {
 
     private String name;
 
-    public StudentChat(String studentID, String firebaseID,String name) {
+    public StudentChat() {
+    }
+
+    public StudentChat(String studentID, String firebaseID, String name) {
         this.studentID = studentID;
         this.firebaseID = firebaseID;
         this.name = name;
