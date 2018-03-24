@@ -89,7 +89,7 @@ public class StudentChatListFragment extends Fragment {
         //TODO: fetch properly
         RequestParams params = new RequestParams();
         params.put("teacher_id", userPrefs.getInt(Constants.ID, 0));
-        RestClient.get("course/getByTeacherId/", headers, params, new JsonHttpResponseHandler() {
+        RestClient.get("teacher/getStudents/", headers, params, new JsonHttpResponseHandler() {
             @Override
             public void onStart() {
                 super.onStart();

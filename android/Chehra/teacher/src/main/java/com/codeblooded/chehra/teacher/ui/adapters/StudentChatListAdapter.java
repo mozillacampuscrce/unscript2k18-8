@@ -2,6 +2,7 @@ package com.codeblooded.chehra.teacher.ui.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.codeblooded.chehra.teacher.Constants;
 import com.codeblooded.chehra.teacher.R;
 import com.codeblooded.chehra.teacher.models.StudentChat;
 import com.codeblooded.chehra.teacher.ui.activities.ChatActivity;
@@ -31,19 +33,22 @@ public class StudentChatListAdapter extends RecyclerView.Adapter<StudentChatList
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.list_item_student_chat,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.list_item_student_chat, parent, false);
         return new ViewHolder(view);
     }
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        StudentChat chat = studentChats.get(position);
+        final StudentChat chat = studentChats.get(position);
         holder.nameTextView.setText(chat.getName());
 
         holder.parentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,ChatActivity.class);
-
+                Intent intent = new Intent(context, ChatActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(Constants.CHAT, chat);
+                intent.putExtras(bundle);
                 context.startActivity(intent);
             }
         });
@@ -55,17 +60,17 @@ public class StudentChatListAdapter extends RecyclerView.Adapter<StudentChatList
     }
 
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView nameTextView;
         LinearLayout parentView;
+
         public ViewHolder(View itemView) {
             super(itemView);
             parentView = itemView.findViewById(R.id.parentView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
         }
     }
-
 
 
 }
