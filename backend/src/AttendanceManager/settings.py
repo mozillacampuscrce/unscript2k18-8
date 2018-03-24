@@ -156,3 +156,19 @@ AUTH_USER_MODEL = 'apiApp.User'
 JWT_AUTH = {
     'JWT_VERIFY_EXPIRATION': False,
 }
+
+# CELERY settings
+
+#CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+#CELERY_BROKER_URL = 'django://localhost:8888/'
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['json', 'pickle']
+CELERY_TASK_SERIALIZER = 'pickle'
+
+PUSH_NOTIFICATIONS_SETTINGS = {
+    "FCM_API_KEY": 'AAAAgRzOgYc:APA91bHWl8Whg3ZbLsTax9LcWdUW1VNFqaGMkNDXXUe2xuFzErob5kYgXQ0yBXAJGheBk-J8NpNSeMEC1lb4-63vHjWjDw_KhVi3qlBlQzHgnTF3_LHj43VtZh9SC5zP1RcjYjK0WFu5',
+    "FCM_ERROR_TIMEOUT": 3000,
+    "UPDATE_ON_DUPLICATE_REG_ID": True
+}
+
