@@ -11,7 +11,7 @@ import com.loopj.android.http.RequestParams;
 import cz.msebera.android.httpclient.Header;
 
 public class RestClient {
-    private static String BASE_URL = "http://192.168.31.140:8000/api/";
+    private static String BASE_URL = "http://8.8.2.11:8000/api/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 

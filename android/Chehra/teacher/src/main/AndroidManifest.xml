@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codeblooded.chehra.teacher">
 
@@ -8,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <service android:name=".fcm.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -19,7 +19,6 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
 
         <activity
             android:name=".ui.activities.MainActivity"
@@ -48,15 +47,16 @@
             android:name=".ui.activities.StudentListActivity"
             android:label="@string/students"
             android:parentActivityName=".ui.activities.CourseDetailActivity" />
-
         <activity
             android:name=".ui.activities.LectureDetailActivity"
             android:parentActivityName=".ui.activities.CourseDetailActivity">
             <intent-filter>
                 <action android:name="notification_click" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".ui.activities.ChatActivity"></activity>
     </application>
+
 </manifest>

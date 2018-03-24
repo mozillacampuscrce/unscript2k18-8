@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/bottom_sheet"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    android:background="@android:color/white"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    android:layout_margin="10dp">
+
+    <Spinner
+        android:id="@+id/classroom_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:prompt="@string/classroom"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/date_textview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="Date"
+            android:textSize="17sp"
+            android:padding="5dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="end">
+
+            <ImageButton
+                android:id="@+id/date_image_button"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_access_time_black_24dp"
+                android:padding="10dp"
+                android:background="@android:color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/start_time_textview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="Start time"
+            android:textSize="17sp"
+            android:padding="5dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="end">
+
+            <ImageButton
+                android:id="@+id/start_time_image_button"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_access_time_black_24dp"
+                android:padding="10dp"
+                android:background="@android:color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/end_time_textview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="End time"
+            android:textSize="17sp"
+            android:padding="5dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="end">
+
+            <ImageButton
+                android:id="@+id/end_time_image_button"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_access_time_black_24dp"
+                android:padding="10dp"
+                android:background="@android:color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/comment_edittext"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textSize="17sp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:hint="Add comment (Optional)"/>
+
+    <Button
+        android:id="@+id/createLectureButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:text="@string/create_lecture"
+        android:layout_marginTop="50dp"/>
+
+
+</LinearLayout>
