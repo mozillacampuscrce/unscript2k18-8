@@ -15,11 +15,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.codeblooded.chehra.teacher.Constants;
-import com.codeblooded.chehra.teacher.R;
-import com.codeblooded.chehra.teacher.models.StudentChat;
-import com.codeblooded.chehra.teacher.ui.adapters.StudentChatListAdapter;
-import com.codeblooded.chehra.teacher.util.RestClient;
+import com.codeblooded.chehra.student.Constants;
+import com.codeblooded.chehra.student.R;
+import com.codeblooded.chehra.student.models.TeacherChat;
+import com.codeblooded.chehra.student.ui.adapters.TeacherChatListAdapter;
+import com.codeblooded.chehra.student.util.RestClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -32,23 +32,17 @@ import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.message.BasicHeader;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link StudentChatListFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- */
 public class TeacherChatListFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private RecyclerView chatsList;
     private TextView emptyView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private ArrayList<StudentChat> studentChats;
+    private ArrayList<TeacherChat> studentChats;
 
-    public static StudentChatListFragment newInstance() {
+    public static TeacherChatListFragment newInstance() {
         // Required empty public constructor
-        return new StudentChatListFragment();
+        return new TeacherChatListFragment();
     }
 
 
@@ -71,13 +65,12 @@ public class TeacherChatListFragment extends Fragment {
         return rootView;
     }
 
-    private void updateUI(ArrayList<StudentChat> studentChats){
-        if(studentChats.size() != 0){
+    private void updateUI(ArrayList<TeacherChat> studentChats) {
+        if (studentChats.size() != 0) {
             emptyView.setVisibility(View.GONE);
             chatsList.setLayoutManager(new LinearLayoutManager(getActivity()));
-            chatsList.setAdapter(new StudentChatListAdapter(getActivity(),studentChats));
-        }
-        else{
+            chatsList.setAdapter(new TeacherChatListAdapter(getActivity(), studentChats));
+        } else {
             emptyView.setVisibility(View.VISIBLE);
         }
     }
@@ -106,7 +99,7 @@ public class TeacherChatListFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject item = response.getJSONObject(i);
-                        StudentChat studentChat = new StudentChat(
+                        TeacherChat studentChat = new TeacherChat(
                                 item.getString("student_id"),
                                 item.getString("name")
                         );

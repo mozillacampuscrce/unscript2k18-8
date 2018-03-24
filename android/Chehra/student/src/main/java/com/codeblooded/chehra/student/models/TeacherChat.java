@@ -8,15 +8,15 @@ import android.os.Parcelable;
  */
 
 public class TeacherChat implements Parcelable {
-    public static final Creator<StudentChat> CREATOR = new Creator<StudentChat>() {
+    public static final Creator<TeacherChat> CREATOR = new Creator<TeacherChat>() {
         @Override
-        public StudentChat createFromParcel(Parcel source) {
-            return new StudentChat(source);
+        public TeacherChat createFromParcel(Parcel source) {
+            return new TeacherChat(source);
         }
 
         @Override
-        public StudentChat[] newArray(int size) {
-            return new StudentChat[size];
+        public TeacherChat[] newArray(int size) {
+            return new TeacherChat[size];
         }
     };
     private String studentID;
