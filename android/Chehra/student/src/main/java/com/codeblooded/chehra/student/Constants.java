@@ -32,5 +32,5 @@ public class Constants {
     public static final String IS_ENROLLED = "is_enrolled";
     public static final String START_TIME = "start_time";
 
-    public static final String CHAT = "chat";
+    public static final String TEACHER_CHAT = "teacher_chat";
 }

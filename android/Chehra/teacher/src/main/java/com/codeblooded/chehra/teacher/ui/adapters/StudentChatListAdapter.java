@@ -39,15 +39,15 @@ public class StudentChatListAdapter extends RecyclerView.Adapter<StudentChatList
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final StudentChat chat = studentChats.get(position);
-        holder.nameTextView.setText(chat.getName());
+        final StudentChat studentChat = studentChats.get(position);
+        holder.nameTextView.setText(studentChat.getName());
 
         holder.parentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChatActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putParcelable(Constants.CHAT, chat);
+                bundle.putParcelable(Constants.STUDENT_CHAT, studentChat);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

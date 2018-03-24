@@ -19,30 +19,30 @@ public class TeacherChat implements Parcelable {
             return new TeacherChat[size];
         }
     };
-    private String studentID;
+    private String teacherID;
     private String name;
 
     public TeacherChat() {
 
     }
 
-    public TeacherChat(String studentID, String name) {
+    public TeacherChat(String teacherID, String name) {
 
-        this.studentID = studentID;
+        this.teacherID = teacherID;
         this.name = name;
     }
 
     protected TeacherChat(Parcel in) {
-        this.studentID = in.readString();
+        this.teacherID = in.readString();
         this.name = in.readString();
     }
 
-    public String getStudentID() {
-        return studentID;
+    public String getTeacherID() {
+        return teacherID;
     }
 
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
+    public void setTeacherID(String teacherID) {
+        this.teacherID = teacherID;
     }
 
     public String getName() {
@@ -60,7 +60,7 @@ public class TeacherChat implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.studentID);
+        dest.writeString(this.teacherID);
         dest.writeString(this.name);
     }
 }
