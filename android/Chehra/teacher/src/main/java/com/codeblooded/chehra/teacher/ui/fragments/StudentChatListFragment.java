@@ -106,14 +106,16 @@ public class StudentChatListFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject item = response.getJSONObject(i);
-                        StudentChat studentChat = new StudentChat();
+                        StudentChat studentChat = new StudentChat(
+                                item.getString("student_id"),
+                                item.getString("name")
+                        );
                         studentChats.add(studentChat);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
                 updateUI(studentChats);
-
             }
 
             @Override
