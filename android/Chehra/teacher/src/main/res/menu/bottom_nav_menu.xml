@@ -14,7 +14,7 @@
     <item
         android:id="@+id/bottom_nav_circular"
         android:icon="@drawable/ic_circular_black_24dp"
-        android:title="Circular" />
+        android:title="@string/circular" />
 
     <item
         android:id="@+id/bottom_nav_chat"
