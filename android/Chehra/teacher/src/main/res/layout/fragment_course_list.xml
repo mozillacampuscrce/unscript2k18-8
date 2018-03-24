@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:name="com.codeblooded.chehra.teacher.ui.fragments.CourseFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.codeblooded.chehra.teacher.ui.fragments.CourseFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:clipToPadding="false"
+            android:contentInsetEnd="8dp"
+            android:contentInsetLeft="8dp"
+            android:contentInsetRight="8dp"
+            android:contentInsetStart="8dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:contentInsetEnd="8dp"
+            app:contentInsetLeft="8dp"
+            app:contentInsetRight="8dp"
+            app:contentInsetStart="8dp">
+
+            <android.support.v7.widget.SearchView
+                android:id="@+id/searchView"
+                style="@style/Widget.AppCompat.SearchView.ActionBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardview_light_background"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:defaultQueryHint="@string/search_courses"
+                app:iconifiedByDefault="false"
+                app:queryHint="@string/search_courses" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:name="com.codeblooded.chehra.student.ui.fragments.CourseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.codeblooded.chehra.student.ui.fragments.CourseListFragment">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swiperefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="LinearLayoutManager"
+                    tools:listitem="@layout/list_item_course" />
+
+                <TextView
+                    android:id="@+id/emptyText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/no_courses"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_add_white_24dp"
+            app:elevation="4dp"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:rippleColor="@color/cardview_light_background" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

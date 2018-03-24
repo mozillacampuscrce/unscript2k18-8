@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/parentView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/course_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:text="Course Name"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/course_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Year, Department, 2017-18"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/course_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textSize="17sp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/enrolledStudentsButton"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:text="@string/enrolled_students" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="4dp"
+                    android:background="#ececec" />
+
+                <!--If enrollment is going on -->
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    app:cardElevation="2dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/enrollment_textview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/enrollment_on_text"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="17sp" />
+                        <Button
+                            android:id="@+id/stop_enrollment"
+                            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stop_enrollment" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <!--EndIf enrollment is going on -->
+
+                <!--If enrollment is off -->
+                <RelativeLayout
+                    android:id="@+id/enrollment_off_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <!-- EndIF LecturesList not empty -->
+                    <LinearLayout
+                        android:id="@+id/lectures_top_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="5dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="5dp"
+                            android:text="@string/lectures"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/lect_count"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="5dp"
+                            android:text="0"
+                            android:textAlignment="viewEnd"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/generate_report_button"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/lectures_top_bar"
+                        android:text="@string/generate_report"
+                        android:visibility="gone" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/lecturesRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/generate_report_button"
+                        android:padding="5dp" />
+                    <!-- EndIF LecturesList not empty -->
+
+                    <!--IF LecturesList empty -->
+                    <TextView
+                        android:id="@+id/lectures_empty_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/no_lectures"
+                        android:textAlignment="center"
+                        android:visibility="gone"/>
+
+                </RelativeLayout>
+                <!--EndIf enrollment is off -->
+            </LinearLayout>
+
+        </ScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/lect_add_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="19sp"
+            android:src="@drawable/ic_add_white_24dp" />
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Student</string>
+    <string name="app_description">Face recognition Attendance Management app</string>
+
+    <!-- Strings related to login -->
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="sign_in_or_register">Sign in or register</string>
+    <string name="or">or</string>
+    <string name="register">Register</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="uid">UID</string>
+    <string name="dept_id">Department ID</string>
+    <string name="dept">Department</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="post_registration">Successfully registered. Please log in</string>
+    <string name="login_error">Error in login</string>
+    <string name="registration_failed">Failed to register</string>
+    <string name="error">An error was encountered. Try again later</string>
+
+    <string name="student">Student</string>
+    <string name="search_courses">Search courses</string>
+    <string name="home">Home</string>
+    <string name="preferences">Preferences</string>
+    <string name="calendar">Calendar</string>
+    <string name="courses">Courses</string>
+    <string name="enrolled">Enrolled</string>
+    <string name="available">Available</string>
+
+    <string name="invalid">Invalid input</string>
+    <string name="no_courses">No courses found</string>
+    <string name="welcome">Welcome</string>
+    <string name="back_press_prompt">Press back again to exit</string>
+
+    <string name="update_face">Update face scan</string>
+    <string name="replay_intro">Replay Intro</string>
+    <string name="about">About</string>
+    <string name="logout">Log out</string>
+
+    <string name="enroll">Enroll</string>
+    <string name="course_details">Course details</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="no_results">No results</string>
+    <string name="uploading">Uploading…</string>
+    <string name="camera_permission_error">Please grant permission</string>
+    <string name="select_course">Select course</string>
+    <string name="attendance_stats">Attendance Stats</string>
+    <string name="total_lectures">Total lectures</string>
+    <string name="lectures_attended">Lectures attended</string>
+    <string name="lectures_missed">Lectures missed</string>
+    <string name="present">Present</string>
+    <string name="absent">Absent</string>
+
+    <string name="backend_channel_name">Server alerts</string>
+    <string name="backend_channel_description">Notifications and alerts sent by backend server</string>
+    <string name="backend_channel_id">backend_channel_id</string>
+</resources>
