@@ -31,7 +31,8 @@ from .lecture_student.views import (
     MarkAttendanceAPIView,StudentListByLectureIdListAPIView,
     LectureByStudentIdListAPIView,IsPresentForLectureDatesByCourseAPIView
 )
-from .classroom.views import ClassroomListAPIView
+
+from .teacher.views import (GetStudentsByTeacherIdListAPIView)
 
 from .auth.views import GCDAuthViewSet
 
@@ -108,7 +109,5 @@ urlpatterns = [
     url(r'^token/create/$', token_create_view),
     url(r'^calendar/getIsPresentForLectureDatesByCourse/$', IsPresentForLectureDatesByCourseAPIView.as_view()),
 
-    # classroom
-    url(r'^classroom/get/$', ClassroomListAPIView.as_view()),
-
+    url(r'^teacher/getStudents/$',  GetStudentsByTeacherIdListAPIView.as_view()),
 ]
