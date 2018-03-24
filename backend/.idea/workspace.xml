@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f5f9a4e-becb-40e4-9167-163de68071e0" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/apiApp/teachers/__init__.py" afterPath="$PROJECT_DIR$/src/apiApp/teacher/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/apiApp/teachers/views.py" afterPath="$PROJECT_DIR$/src/apiApp/teacher/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/apiApp/circular/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/apiApp/feedback/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -141,6 +141,20 @@
               <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="apiApp" type="462c0819:PsiDirectoryNode" />
+              <item name="circular" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="apiApp" type="462c0819:PsiDirectoryNode" />
+              <item name="feedback" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="apiApp" type="462c0819:PsiDirectoryNode" />
               <item name="lecture_student" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -248,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521917344291</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Changed teachers">
+      <created>1521917378243</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1521917378243</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -320,7 +341,8 @@
     <MESSAGE value="Workspace" />
     <MESSAGE value="Added teachers" />
     <MESSAGE value="Added result" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added result" />
+    <MESSAGE value="Changed teachers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed teachers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
