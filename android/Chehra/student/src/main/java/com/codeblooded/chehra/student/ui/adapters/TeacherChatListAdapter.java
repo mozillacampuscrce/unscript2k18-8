@@ -1,4 +1,4 @@
-package com.codeblooded.chehra.teacher.ui.adapters;
+package com.codeblooded.chehra.student.ui.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.codeblooded.chehra.teacher.Constants;
-import com.codeblooded.chehra.teacher.R;
-import com.codeblooded.chehra.teacher.models.StudentChat;
-import com.codeblooded.chehra.teacher.ui.activities.ChatActivity;
+import com.codeblooded.chehra.student.Constants;
+import com.codeblooded.chehra.student.R;
+import com.codeblooded.chehra.student.models.TeacherChat;
+import com.codeblooded.chehra.student.ui.activities.ChatActivity;
 
 import java.util.ArrayList;
 
@@ -21,33 +21,33 @@ import java.util.ArrayList;
  * Created by Aashish Nehete on 24-Mar-18.
  */
 
-public class StudentChatListAdapter extends RecyclerView.Adapter<StudentChatListAdapter.ViewHolder> {
+public class TeacherChatListAdapter extends RecyclerView.Adapter<TeacherChatListAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<StudentChat> studentChats;
+    private ArrayList<TeacherChat> teacherChats;
 
-    public StudentChatListAdapter(Context context, ArrayList<StudentChat> studentChats) {
+    public TeacherChatListAdapter(Context context, ArrayList<TeacherChat> teacherChats) {
         this.context = context;
-        this.studentChats = studentChats;
+        this.teacherChats = teacherChats;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.list_item_student_chat, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.list_item_teacher_chat, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final StudentChat studentChat = studentChats.get(position);
-        holder.nameTextView.setText(studentChat.getName());
+        final TeacherChat chat = teacherChats.get(position);
+        holder.nameTextView.setText(chat.getName());
 
         holder.parentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChatActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putParcelable(Constants.STUDENT_CHAT, studentChat);
+                bundle.putParcelable(Constants.TEACHER_CHAT, chat);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
@@ -56,7 +56,7 @@ public class StudentChatListAdapter extends RecyclerView.Adapter<StudentChatList
 
     @Override
     public int getItemCount() {
-        return studentChats.size();
+        return teacherChats.size();
     }
 
 

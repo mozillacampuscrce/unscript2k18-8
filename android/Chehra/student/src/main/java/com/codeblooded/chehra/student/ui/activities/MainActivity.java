@@ -23,6 +23,7 @@ import com.codeblooded.chehra.student.ui.fragments.CalendarFragment;
 import com.codeblooded.chehra.student.ui.fragments.CourseListFragment;
 import com.codeblooded.chehra.student.ui.fragments.CoursesFragment;
 import com.codeblooded.chehra.student.ui.fragments.PreferenceFragment;
+import com.codeblooded.chehra.student.ui.fragments.TeacherChatListFragment;
 import com.codeblooded.chehra.student.util.RestClient;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -79,12 +80,34 @@ public class MainActivity extends AppCompatActivity
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                     .commit();
                             break;
+
                         case R.id.bottom_nav_calendar:
                             fm.beginTransaction()
                                     .replace(R.id.frameLayout, new CalendarFragment())
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                     .commit();
                             break;
+
+                        case R.id.bottom_nav_results:
+                            fm.beginTransaction()
+                                    // TODO: Add results
+                                    .replace(R.id.frameLayout, new TeacherChatListFragment())
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                                    .commit();
+
+                        case R.id.bottom_nav_circular:
+                            fm.beginTransaction()
+                                    // TODO: Add circular
+                                    .replace(R.id.frameLayout, new TeacherChatListFragment())
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                                    .commit();
+
+                        case R.id.bottom_nav_chat:
+                            fm.beginTransaction()
+                                    .replace(R.id.frameLayout, new TeacherChatListFragment())
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                                    .commit();
+
                         case R.id.bottom_nav_settings:
                             fm.beginTransaction()
                                     .replace(R.id.frameLayout, new PreferenceFragment())

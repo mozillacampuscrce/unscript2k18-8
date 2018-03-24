@@ -62,4 +62,7 @@
     <string name="backend_channel_name">Server alerts</string>
     <string name="backend_channel_description">Notifications and alerts sent by backend server</string>
     <string name="backend_channel_id">backend_channel_id</string>
+    <string name="results">Results</string>
+    <string name="circular">Circular</string>
+    <string name="chats">Chats</string>
 </resources>

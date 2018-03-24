@@ -21,9 +21,9 @@ import android.widget.Toast;
 import com.codeblooded.chehra.teacher.Constants;
 import com.codeblooded.chehra.teacher.R;
 import com.codeblooded.chehra.teacher.models.Course;
-import com.codeblooded.chehra.teacher.ui.fragments.ChatListFragment;
 import com.codeblooded.chehra.teacher.ui.fragments.CourseFragment;
 import com.codeblooded.chehra.teacher.ui.fragments.PreferenceFragment;
+import com.codeblooded.chehra.teacher.ui.fragments.StudentChatListFragment;
 import com.codeblooded.chehra.teacher.util.RestClient;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -37,11 +37,11 @@ import cz.msebera.android.httpclient.message.BasicHeader;
 
 public class MainActivity extends AppCompatActivity implements CourseFragment.OnListFragmentInteractionListener,
         PreferenceFragment.OnPreferenceFragmentInteractionListener,
-        ChatListFragment.OnFragmentInteractionListener {
+        StudentChatListFragment.OnFragmentInteractionListener {
     private static final String LOG = "MainActivity";
     SharedPreferences preferences, userPrefs;
     BottomNavigationView bottomNavigationView;
-    ChatListFragment chatListFragment;
+    StudentChatListFragment studentChatListFragment;
     private boolean backPressFlag = false;
 
     @Override
@@ -77,19 +77,20 @@ public class MainActivity extends AppCompatActivity implements CourseFragment.On
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                     .commit();
                             break;
+
+                        case R.id.bottom_nav_chat:
+                            studentChatListFragment = StudentChatListFragment.newInstance();
+                            fm.beginTransaction()
+                                    .replace(R.id.frameLayout, studentChatListFragment)
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                                    .commit();
+
                         case R.id.bottom_nav_settings:
                             fm.beginTransaction()
                                     .replace(R.id.frameLayout, new PreferenceFragment())
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                     .commit();
                             break;
-
-                        case R.id.bottom_nav_chat:
-                            chatListFragment = ChatListFragment.newInstance();
-                            fm.beginTransaction()
-                                    .replace(R.id.frameLayout,chatListFragment)
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                    .commit();
                     }
                     return true;
                 }

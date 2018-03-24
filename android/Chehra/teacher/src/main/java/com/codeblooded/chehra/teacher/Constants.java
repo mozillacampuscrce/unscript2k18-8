@@ -24,4 +24,6 @@ public class Constants {
     public static final String COURSE = "course";
     public static final String LECTURE = "lecture";
     public static final String IS_LECTURE_SPECIFIC = "is_lecture_specific";
+
+    public static final String STUDENT_CHAT = "student_chat";
 }

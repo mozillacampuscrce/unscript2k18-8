@@ -1,4 +1,4 @@
-package com.codeblooded.chehra.teacher.ui.activities;
+package com.codeblooded.chehra.student.ui.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,11 +9,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.codeblooded.chehra.teacher.Constants;
-import com.codeblooded.chehra.teacher.R;
-import com.codeblooded.chehra.teacher.models.Chat;
-import com.codeblooded.chehra.teacher.models.StudentChat;
-import com.codeblooded.chehra.teacher.ui.adapters.ChatListRecyclerViewAdapter;
+import com.codeblooded.chehra.student.Constants;
+import com.codeblooded.chehra.student.R;
+import com.codeblooded.chehra.student.models.Chat;
+import com.codeblooded.chehra.student.models.TeacherChat;
+import com.codeblooded.chehra.student.ui.adapters.ChatListRecyclerViewAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,13 +48,13 @@ public class ChatActivity extends AppCompatActivity {
         adapter = new ChatListRecyclerViewAdapter(this, chats);
         chatMessages.setAdapter(adapter);
 
-        StudentChat studentChat = getIntent().getExtras().getParcelable(Constants.STUDENT_CHAT);
+        TeacherChat teacherChat = getIntent().getExtras().getParcelable(Constants.TEACHER_CHAT);
 
         SharedPreferences userPrefs = getSharedPreferences(Constants.USER_PREFS, MODE_PRIVATE);
         databaseReference = FirebaseDatabase.getInstance().getReference()
                 .child("chats")
-                .child(String.valueOf(userPrefs.getInt(Constants.ID, 1)))
-                .child(studentChat.getStudentID());
+                .child(String.valueOf(userPrefs.getInt(Constants.ID, 0)))
+                .child(teacherChat.getTeacherID());
 
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
@@ -85,7 +85,6 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
-
 
     public void sendMessage(View view) {
         String message = messageEditText.getText().toString();
