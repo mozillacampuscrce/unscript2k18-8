@@ -39,7 +39,7 @@ public class StudentChatListAdapter extends RecyclerView.Adapter<StudentChatList
 
     @Override
     public int getItemCount() {
-        return 0;
+        return studentChats.size();
     }
 
 

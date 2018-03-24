@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,25 +12,26 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.codeblooded.chehra.teacher.R;
-import com.codeblooded.chehra.teacher.models.Chat;
+import com.codeblooded.chehra.teacher.models.StudentChat;
+import com.codeblooded.chehra.teacher.ui.adapters.StudentChatListAdapter;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ChatListFragment.OnFragmentInteractionListener} interface
+ * {@link StudentChatListFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class ChatListFragment extends Fragment {
+public class StudentChatListFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private RecyclerView chatsList;
     private TextView emptyView;
 
-    public static ChatListFragment newInstance() {
+    public static StudentChatListFragment newInstance() {
         // Required empty public constructor
-        return new ChatListFragment();
+        return new StudentChatListFragment();
     }
 
 
@@ -43,9 +45,18 @@ public class ChatListFragment extends Fragment {
         return rootView;
     }
 
-    private void updateUI(ArrayList<Chat> chats){
-
+    private void updateUI(ArrayList<StudentChat> studentChats){
+        if(studentChats.size() != 0){
+            emptyView.setVisibility(View.GONE);
+            chatsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+            chatsList.setAdapter(new StudentChatListAdapter(getActivity(),studentChats));
+        }
+        else{
+            emptyView.setVisibility(View.VISIBLE);
+        }
     }
+
+
 
 
     @Override
