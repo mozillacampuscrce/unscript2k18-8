@@ -155,3 +155,92 @@ class Lecture(models.Model):
     # for python 3
     def __str__(self):
         return str(self.lect_id)
+
+
+# for class student images
+def training_upload_location(instance, filename):
+    return "training_data/%s" % (filename)
+
+
+class StudentData(models.Model):
+    data_id = models.AutoField(primary_key=True)
+    student_id = models.OneToOneField('Student', on_delete=models.CASCADE)
+    data = models.FileField(upload_to=training_upload_location)
+
+    # for python 2
+    def __unicode__(self):
+        return str(self.data_id)
+
+    # for python 3
+    def __str__(self):
+        return str(self.data_id)
+
+
+def circular_upload_location(instance, filename):
+    return "circulars/%s" % (filename)
+
+
+class Circular(models.Model):
+    circ_id = models.AutoField(primary_key=True)
+    teacher_id = models.OneToOneField('Teacher', on_delete=models.CASCADE)
+    image_path = models.FileField(upload_to=circular_upload_location)
+
+    # for python 2
+    def __unicode__(self):
+        return str(self.circ_id)
+
+    # for python 3
+    def __str__(self):
+        return str(self.circ_id)
+
+
+class ResultType(models.Model):
+    res_type_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+
+    # for python 2
+    def __unicode__(self):
+        return str(self.res_type_id)
+
+    # for python 3
+    def __str__(self):
+        return str(self.res_type_id)
+
+
+def result_xls_upload_location(instance, filename):
+    return "results/xls/%s" % (filename)
+
+
+def result_pdf_upload_location(instance, filename):
+    return "results/pdf/%s" % (filename)
+
+
+class Result(models.Model):
+    result_id = models.AutoField(primary_key=True)
+    course_id = models.OneToOneField('Course', on_delete=models.CASCADE)
+    result_type = models.OneToOneField('ResultType', on_delete=models.CASCADE)
+    xls_file = models.FileField(upload_to=result_xls_upload_location)
+    pdf_file = models.FileField(upload_to=result_pdf_upload_location)
+
+    # for python 2
+    def __unicode__(self):
+        return str(self.result_id)
+
+    # for python 3
+    def __str__(self):
+        return str(self.result_id)
+
+
+class Feedback(models.Model):
+    feedback_id = models.AutoField(primary_key=True)
+    student_id = models.OneToOneField('Student', on_delete=models.CASCADE)
+    course_id = models.OneToOneField('Course', on_delete=models.CASCADE)
+    feedback = models.CharField(max_length=255)
+
+    # for python 2
+    def __unicode__(self):
+        return str(self.feedback_id)
+
+    # for python 3
+    def __str__(self):
+        return str(self.feedback_id)
