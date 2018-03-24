@@ -8,7 +8,8 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:paddingTop="10dp"
-    android:context="com.codeblooded.chehra.teacher.ui.activities.ChatActivity"
+    tools:context="com.codeblooded.chehra.student.ui.activities.ChatActivity"
+
     >
 
     <ListView

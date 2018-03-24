@@ -7,6 +7,16 @@
         android:title="@string/courses" />
 
     <item
+        android:id="@+id/bottom_nav_results"
+        android:icon="@drawable/ic_result_black_24dp"
+        android:title="@string/results" />
+
+    <item
+        android:id="@+id/bottom_nav_circular"
+        android:icon="@drawable/ic_circular_black_24dp"
+        android:title="@string/circular" />
+
+    <item
         android:id="@+id/bottom_nav_chat"
         android:icon="@drawable/ic_chat_black_24dp"
         android:title="@string/chats" />
@@ -15,6 +25,4 @@
         android:id="@+id/bottom_nav_settings"
         android:icon="@drawable/ic_settings_black_24dp"
         android:title="@string/preferences" />
-
-
 </menu>

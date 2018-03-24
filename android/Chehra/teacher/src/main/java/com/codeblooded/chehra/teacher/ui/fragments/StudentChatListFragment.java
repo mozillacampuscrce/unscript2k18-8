@@ -89,7 +89,7 @@ public class StudentChatListFragment extends Fragment {
         //TODO: fetch properly
         RequestParams params = new RequestParams();
         params.put("teacher_id", userPrefs.getInt(Constants.ID, 0));
-        RestClient.get("course/getByTeacherId/", headers, params, new JsonHttpResponseHandler() {
+        RestClient.get("teacher/getStudents/", headers, params, new JsonHttpResponseHandler() {
             @Override
             public void onStart() {
                 super.onStart();
@@ -106,14 +106,16 @@ public class StudentChatListFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject item = response.getJSONObject(i);
-                        StudentChat studentChat = new StudentChat();
+                        StudentChat studentChat = new StudentChat(
+                                item.getString("student_id"),
+                                item.getString("name")
+                        );
                         studentChats.add(studentChat);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
                 updateUI(studentChats);
-
             }
 
             @Override
