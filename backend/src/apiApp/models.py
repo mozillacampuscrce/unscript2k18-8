@@ -67,6 +67,34 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.first_name
 
 
+class Student(models.Model):
+    student_id = models.AutoField(primary_key=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    uid = models.CharField(max_length=15, unique=True)
+    dept_id = models.ForeignKey('Department', on_delete=models.CASCADE)
+
+    # for python 2
+    def __unicode__(self):
+        return self.user.username
+
+    # for python 3
+    def __str__(self):
+        return self.user.username
+
+
+class Teacher(models.Model):
+    teacher_id = models.AutoField(primary_key=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    # for python 2
+    def __unicode__(self):
+        return self.user.username
+
+    # for python 3
+    def __str__(self):
+        return self.user.username
+
+
 class Course(models.Model):
     course_id = models.AutoField(primary_key=True)
     dept_id = models.ForeignKey('Department', on_delete=models.CASCADE)
@@ -93,16 +121,14 @@ class Course(models.Model):
         return self.name
 
 
-class Student(models.Model):
-    student_id = models.AutoField(primary_key=True)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    uid = models.CharField(max_length=15, unique=True)
-    dept_id = models.ForeignKey('Department', on_delete=models.CASCADE)
+class Department(models.Model):
+    dept_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=10)
 
     # for python 2
     def __unicode__(self):
-        return self.user.username
+        return self.name
 
     # for python 3
     def __str__(self):
-        return self.user.username
+        return self.name
