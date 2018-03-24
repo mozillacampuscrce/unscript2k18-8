@@ -1,4 +1,4 @@
-from ..models import Student, Teacher
+from ..models import Student, StudentData, Teacher
 from rest_framework.serializers import ModelSerializer
 from ..models import User
 
@@ -33,3 +33,8 @@ class TeacherSerializer(ModelSerializer):
         model = Teacher
         fields = ['teacher_id', 'user']
 
+
+class StudentDataSerializer(ModelSerializer):
+    class Meta:
+        model = StudentData
+        fields = ['data_id', 'student_id', 'data']

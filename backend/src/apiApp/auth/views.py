@@ -5,10 +5,21 @@ from ..custom_user_backend import UserBackend
 from django.contrib.auth import get_user_model
 from rest_framework.views import APIView
 
-from .serializers import UserSerializer, TeacherSerializer, StudentSerializer
+from rest_framework.parsers import MultiPartParser
 
-from ..models import Teacher, Student, Department
+from .serializers import StudentDataSerializer, UserSerializer, \
+    TeacherSerializer, StudentSerializer
+from ..models import Teacher, Student, Department,StudentData
 
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+
+from ..tasks import video_process
+
+
+from push_notifications.api.rest_framework import GCMDeviceViewSet
 
 from rest_framework.generics import (
     ListAPIView,
@@ -132,3 +143,43 @@ class Login(APIView):
                          'teacher': TeacherSerializer(teacher).data,
                          'user': UserSerializer(user).data
                          }, status=200)
+
+
+
+class StudentDataCreateAPIView(APIView):
+    parser_classes = (MultiPartParser,)
+    permission_classes = ()
+
+    def post(self, request):
+        video = request.data['video']
+        temp = 'temp'
+
+        path = default_storage.save(temp, ContentFile(video.read()))
+        full_path = default_storage.path(path)
+        print("StudentDataCreateAPIView")
+        video_process.delay(full_path, request.POST['student_id'])
+
+        return Response({'success': True, 'msg': 'Video Uploaded. It will be processed and validated shortly.'})
+
+
+class StudentDataUpdateAPIView(UpdateAPIView):
+    serializer_class = StudentDataSerializer
+    queryset = StudentData.objects.all()
+
+
+class StudentDataGetListAPIView(ListAPIView):
+    serializer_class = StudentDataSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        student_id = self.request.GET['student_id']
+        return StudentData.objects.filter(student_id=student_id)
+
+
+class StudentDataDeleteAPIView(DestroyAPIView):
+    serializer_class = StudentDataSerializer
+    queryset = StudentData.objects.all()
+
+class GCDAuthViewSet(GCMDeviceViewSet):
+    authentication_classes = (JSONWebTokenAuthentication,)
+
+
