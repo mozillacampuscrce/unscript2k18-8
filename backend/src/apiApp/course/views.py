@@ -21,13 +21,13 @@ from .serializers import (
     CourseCreateSerializer,
     CourseDetailSerializer
 )
+from ..report import generate
 
 from ..models import Course, Teacher, Department
 
 from django.core.files.storage import default_storage
 
 from ..tasks import course_process
-from ..report import generate
 
 # don't change variable names
 class CourseCreateAPIView(CreateAPIView):
