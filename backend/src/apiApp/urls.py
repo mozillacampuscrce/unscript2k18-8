@@ -109,5 +109,5 @@ urlpatterns = [
     url(r'^token/create/$', token_create_view),
     url(r'^calendar/getIsPresentForLectureDatesByCourse/$', IsPresentForLectureDatesByCourseAPIView.as_view()),
 
-    url(r'^teacher/getStudents/$', GetStudentsByTeacherIdListAPIView.as_view()),
+    url(r'^teacher/getStudents/$',  GetStudentsByTeacherIdListAPIView.as_view()),
 ]
