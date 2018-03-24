@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -19,7 +20,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -80,5 +84,18 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    public void sendMessage(View view) {
+        String message = messageEditText.getText().toString();
+        Chat chat = new Chat(message, getCurrentTimeStamp(), "student");
+        String key = databaseReference.push().getKey();
+
+        databaseReference.child(key).setValue(chat);
+    }
+
+    private String getCurrentTimeStamp() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.US).format(new Date());
     }
 }
