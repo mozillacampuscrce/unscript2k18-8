@@ -86,6 +86,7 @@ public class StudentChatListFragment extends Fragment {
         SharedPreferences userPrefs = getActivity().getSharedPreferences(Constants.USER_PREFS, Context.MODE_PRIVATE);
         Header[] headers = new Header[]{new BasicHeader("Authorization", "JWT " + userPrefs.getString(Constants.TOKEN, ""))};
 
+        //TODO: fetch properly
         RequestParams params = new RequestParams();
         params.put("teacher_id", userPrefs.getInt(Constants.ID, 0));
         RestClient.get("course/getByTeacherId/", headers, params, new JsonHttpResponseHandler() {
