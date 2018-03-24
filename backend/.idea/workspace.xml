@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9f5f9a4e-becb-40e4-9167-163de68071e0" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/apiApp/circular/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/apiApp/feedback/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -269,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521917378243</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added feedback">
+      <created>1521917412282</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1521917412282</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -342,7 +348,8 @@
     <MESSAGE value="Added teachers" />
     <MESSAGE value="Added result" />
     <MESSAGE value="Changed teachers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed teachers" />
+    <MESSAGE value="Added feedback" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added feedback" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
