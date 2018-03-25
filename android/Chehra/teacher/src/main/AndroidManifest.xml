@@ -56,7 +56,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.ChatActivity"></activity>
+        <activity android:name=".ui.activities.ChatActivity" />
+        <activity android:name=".ui.activities.CircularActivity"></activity>
     </application>
 
 </manifest>

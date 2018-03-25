@@ -42,7 +42,8 @@
         <activity
             android:name=".ui.activities.FaceRecordActivity"
             android:theme="@style/AppTheme.Translucent" />
-        <activity android:name=".ui.activities.ChatActivity"></activity>
+        <activity android:name=".ui.activities.ChatActivity" />
+        <activity android:name=".ui.activities.CircularActivity"></activity>
     </application>
 
 </manifest>
