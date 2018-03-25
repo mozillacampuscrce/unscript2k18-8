@@ -111,13 +111,17 @@ def generate_dataset(vid):
     video_capture = cv2.VideoCapture(vid)
     frames = []
     frame_count = 0
-    batch_size = 7
+    batch_size = 4
+
+    print("1")
 
     while video_capture.isOpened():
         ret, frame = video_capture.read()
 
         if not ret:
             break
+
+        print("2")
 
         frame = frame[:, :, ::-1]
         (h, w) = frame.shape[:2]
@@ -126,29 +130,40 @@ def generate_dataset(vid):
         m = cv2.getRotationMatrix2D(center, 90, 1.0)
         frame = cv2.warpAffine(frame, m, (w, h))
 
+        print("3")
+
         frame_count += 1
         frames.append(frame)
 
+        print("4")
         if len(frames) == batch_size:
             batch_of_face_locations = fc.batch_face_locations(frames)
 
+            print("5")
             for frame_number_in_batch, face_locations in \
                     enumerate(batch_of_face_locations):
                 if len(face_locations) == 1:
+
+                    print("6")
                     top, right, bottom, left = face_locations[0]
                     image = frames[frame_number_in_batch]
                     face_image = image[top:bottom, left:right]
                     enc = fc.face_encodings(face_image,
                                             face_locations)[0]
+
+                    print("7")
                     if len(enc):
                         encodings.append(enc)
             frames = []
 
+
+    print("8")
     if encodings:
         encodings = np.vstack(encodings)
     else:
         encodings = []
 
+    print("9")
     return encodings
 
 
@@ -156,28 +171,37 @@ def generate_dataset(vid):
 def video_process(path, id):
     full_path = default_storage.path(path)
 
+    print("10")
     dataset = generate_dataset(full_path)
 
     if len(dataset):
         outfile = TemporaryFile()
         np.save(outfile, dataset)
 
+        print("11")
         student = Student.objects.get(student_id=id)
         f = File(outfile, '{0}.npy'.format(student))
 
+        print("12")
         if StudentData.objects.filter(student_id=student).count() == 0:
             instance = StudentData(student_id=student, data=f)
         else:
             instance = StudentData.objects.filter(student_id=student).first()
             instance.data = f
         instance.save()
+
+        print("13")
     else:
+
+        print("14")
         student = Student.objects.get(student_id=id)
         user = student.user
 
+        print("15")
         student_device = GCMDevice.objects.get(user=user)
         student_device.send_message("No face found in video, upload another one!")
 
+    print("16")
     default_storage.delete(path)
 
 

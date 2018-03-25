@@ -30,10 +30,10 @@ class GetStudentsByTeacherIdListAPIView(APIView):
     def get(self, format=None):
         teacher_id = self.request.GET['teacher_id']
 
-        course_ids = Course.Objects.filter(teacher_id=teacher_id).values_list('teacher_id',flat=true)
+        course_ids = Course.Objects.filter(teacher_id=teacher_id).values_list('teacher_id',
+                                                                              flat=True)
         print(course_ids)
 
-        #course_id = self.request.GET['course_id']
-        #students = Student.objects.filter(course=course_id)
-        #serializer = StudentSerializer(students, many=True)
-        return Response({"Hello"})
+        students = Student.objects.filter(course__in=course_ids)
+        serializer = StudentSerializer(students, many=True)
+        return Response(serializer.data)

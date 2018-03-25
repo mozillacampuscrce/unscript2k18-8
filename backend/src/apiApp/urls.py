@@ -36,6 +36,8 @@ from .teacher.views import (GetStudentsByTeacherIdListAPIView)
 
 from .auth.views import GCDAuthViewSet
 
+from .views import showlogin, showWork
+
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -110,4 +112,12 @@ urlpatterns = [
     url(r'^calendar/getIsPresentForLectureDatesByCourse/$', IsPresentForLectureDatesByCourseAPIView.as_view()),
 
     url(r'^teacher/getStudents/$',  GetStudentsByTeacherIdListAPIView.as_view()),
+
+    # teacher-portal
+    url(r'^weblogin/$', showlogin),
+    url(r'^work/$', showWork),
+    #url(r'^work/?teacher_id=(?P<teacher_id>\d+)/$', showWork)
+
+
+
 ]

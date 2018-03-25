@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- 0098A6 -->
+<div class="container" style="float: left; width: 100%;">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid" style="background-color: #4ac9d8;">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" style="color: white;">WebSiteName</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#" style="color: white;">Home</a></li>
+        <li><a href="#" style="color: white;">Circulars</a></li>
+        <li><a href="#" style="color: white;">Results</a></li>
+        <li><a href="#" style="color: white;">Marksheets</a></li>
+      </ul>
+      <ul class="nav navbar-nav" style="float: right;">
+        <li><a href="#" style="color: white;">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div>
+    <table class="table">
+      <tr>
+        <td>CourseID</td>
+        <td>DeptID</td>
+        <td>Name</td>
+        <td>Year</td>
+      </tr>
+    {% for item in queryset %}
+      <tr>
+        <td>{{item.course_id}}</td>
+        <td>{{item.dept_id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.year}}</td>
+        <td>{{item.course_id}}</td>
+        <td><input type="file" name="result" data-course="{{item.course_id}}" data-dept="{{item.dept.id}}" /></td>
+      </tr>
+    {% endfor %}
+    </table>
+  </div>
+
+  <br>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Details</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="vertical-align: middle; ">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Details</h4>
+        </div>
+        <div class="modal-body">
+
+
+          <div class="dropdown">
+            <p style="display: inline;">Course</p>
+            <button id="crsattr" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="display: inline;"> Select Course
+            <span class="caret"></span></button>
+          </div>
+
+
+          <br>
+          <br>
+
+
+          <div class="dropdown">
+            <p style="display: inline;">Type</p>
+            <button id="typattr" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="display: inline;"> Select Type
+            <span class="caret"></span></button>
+          </div>
+
+
+          <br>
+          <br>
+
+
+          <div class="wrapper" style="text-align: center;">
+            <button id="addfile" class="button btn btn-primary" style="width: 150px; height: 40px;">Add File</button>
+          </div>
+
+
+          <br>
+          <br>
+
+
+          <div class="wrapper" style="text-align: center;">
+            <button id="sub" class="button btn btn-primary" style="width: 150px; height: 40px;">Submit</button>
+          </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+</body>
+</html>

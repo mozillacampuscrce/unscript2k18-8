@@ -25,7 +25,7 @@ SECRET_KEY = '4=gg^1tf$6&(_&(zw8f_g^-qj4)(=7#o$%ajhc-6m4xx%3kbla'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8.8.2.11']
 
 
 # Application definition
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'AttendanceManager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

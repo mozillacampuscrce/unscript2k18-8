@@ -3,9 +3,8 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
-from .models import Lecture, Student, Course
-
+from django.shortcuts import render
+from .models import Lecture, Student, Course,Teacher, Circular,Result
 
 # Create your views here.
 @csrf_exempt
@@ -32,3 +31,33 @@ def isStudentEnrolledInCourse(student_id, course):
     queryset = course.students.filter(student_id=student_id)
     print(queryset)
     return queryset.count() == 1
+
+@csrf_exempt
+def showlogin(request):
+    context ={
+        "title":"Tej"
+    }
+    return render(request,"index.html",context)
+
+
+@csrf_exempt
+def showWork(request):
+    teacher_id = request.GET['teacher_id']
+    #teacher = Teacher.objects.filter(user=self.request.user).first()
+    print(teacher_id)
+    queryset = Course.objects.filter(teacher_id=teacher_id)
+
+    circulars = Circular.objects.filter(teacher_id=teacher_id)
+
+    results = Result.objects.all()
+
+
+
+    print(queryset)
+    context ={
+        "queryset": queryset,
+        "circulars": circulars
+    }
+    return render(request, "work.html",context)
+
+

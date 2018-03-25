@@ -248,6 +248,7 @@ class Result(models.Model):
         return str(self.result_id)
 
 
+
 class Feedback(models.Model):
     feedback_id = models.AutoField(primary_key=True)
     student_id = models.ForeignKey('Student', on_delete=models.CASCADE)
