@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity
                                     .replace(R.id.frameLayout, new TeacherChatListFragment())
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                     .commit();
+                            break;
 
                         case R.id.bottom_nav_circular:
                             fm.beginTransaction()
@@ -101,12 +102,14 @@ public class MainActivity extends AppCompatActivity
                                     .replace(R.id.frameLayout, new TeacherChatListFragment())
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                     .commit();
+                            break;
 
                         case R.id.bottom_nav_chat:
                             fm.beginTransaction()
                                     .replace(R.id.frameLayout, new TeacherChatListFragment())
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                     .commit();
+                            break;
 
                         case R.id.bottom_nav_settings:
                             fm.beginTransaction()
