@@ -43,5 +43,7 @@ dependencies {
     implementation 'com.github.lecho:hellocharts-android:v1.5.8'
     implementation 'com.google.firebase:firebase-messaging:12.0.0'
     implementation 'com.google.firebase:firebase-database:12.0.0'
+    compile project(path: ':teacher')
+    compile project(path: ':teacher')
 }
 apply plugin: 'com.google.gms.google-services'
