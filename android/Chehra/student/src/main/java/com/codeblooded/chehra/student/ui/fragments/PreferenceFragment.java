@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.codeblooded.chehra.student.Constants;
 import com.codeblooded.chehra.student.R;
-import com.codeblooded.chehra.student.ui.activities.FaceRecordActivity;
+//import com.codeblooded.chehra.student.ui.activities.FaceRecordActivity;
 import com.codeblooded.chehra.student.ui.activities.IntroActivity;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
@@ -50,7 +50,7 @@ public class PreferenceFragment extends Fragment {
         rescan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), FaceRecordActivity.class));
+//                startActivity(new Intent(getActivity(), FaceRecordActivity.class));
             }
         });
 

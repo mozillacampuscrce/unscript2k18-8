@@ -60,10 +60,12 @@ public class MainActivity extends AppCompatActivity
         if (!preferences.getBoolean(Constants.LOGGED_IN, false)) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
-        } else if (!userPrefs.getBoolean(Constants.IS_VIDEO_ADDED, false)) {
-            startActivity(new Intent(MainActivity.this, FaceRecordActivity.class));
-            finish();
-        } else {
+        }
+//        else if (!userPrefs.getBoolean(Constants.IS_VIDEO_ADDED, false)) {
+//            startActivity(new Intent(MainActivity.this, FaceRecordActivity.class));
+//            finish();
+//        }
+        else {
             final FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction()
                     .replace(R.id.frameLayout, new CoursesFragment())
@@ -111,12 +113,12 @@ public class MainActivity extends AppCompatActivity
                                     .commit();
                             break;
 
-                        case R.id.bottom_nav_settings:
-                            fm.beginTransaction()
-                                    .replace(R.id.frameLayout, new PreferenceFragment())
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                    .commit();
-                            break;
+//                        case R.id.bottom_nav_settings:
+//                            fm.beginTransaction()
+//                                    .replace(R.id.frameLayout, new PreferenceFragment())
+//                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+//                                    .commit();
+//                            break;
                     }
                     return true;
                 }

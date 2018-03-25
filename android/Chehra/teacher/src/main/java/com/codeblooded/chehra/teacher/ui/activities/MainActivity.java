@@ -86,12 +86,12 @@ public class MainActivity extends AppCompatActivity implements CourseFragment.On
                                     .commit();
                             break;
 
-                        case R.id.bottom_nav_settings:
-                            fm.beginTransaction()
-                                    .replace(R.id.frameLayout, new PreferenceFragment())
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                    .commit();
-                            break;
+//                        case R.id.bottom_nav_settings:
+//                            fm.beginTransaction()
+//                                    .replace(R.id.frameLayout, new PreferenceFragment())
+//                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+//                                    .commit();
+//                            break;
                     }
                     return true;
                 }
