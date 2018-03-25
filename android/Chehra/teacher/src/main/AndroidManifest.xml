@@ -57,7 +57,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activities.ChatActivity" />
-        <activity android:name=".ui.activities.CircularActivity"></activity>
+        <activity android:name=".ui.activities.CircularActivity" />
+        <activity android:name=".ui.activities.ResultActivity"></activity>
     </application>
 
 </manifest>

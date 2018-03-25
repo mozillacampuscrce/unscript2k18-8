@@ -7,10 +7,10 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:paddingTop="10dp"
-    tools:context="com.codeblooded.chehra.teacher.ui.activities.CircularActivity">
+    tools:context="com.codeblooded.chehra.student.ui.activities.ResultActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/resultListView"
+        android:id="@+id/circularListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/linearLayout"
@@ -19,7 +19,7 @@
         android:divider="@android:color/transparent"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll"
-        tools:listitem="@layout/list_item_result" />
+        tools:listitem="@layout/list_item_circular" />
 
 
 </RelativeLayout>
