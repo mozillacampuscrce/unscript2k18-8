@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parentView"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/nameTextView"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
+        android:elevation="@dimen/cardview_default_elevation"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="18sp"/>
+        android:layout_margin="5dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:layout_margin="15dp"
+            android:textSize="18sp" />
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

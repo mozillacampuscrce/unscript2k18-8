@@ -51,8 +51,8 @@ public class ChatActivity extends AppCompatActivity {
         StudentChat studentChat = getIntent().getExtras().getParcelable(Constants.STUDENT_CHAT);
 
         SharedPreferences userPrefs = getSharedPreferences(Constants.USER_PREFS, MODE_PRIVATE);
-        databaseReference = FirebaseDatabase.getInstance().getReference()
-                .child("chats")
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("chats")
                 .child(String.valueOf(userPrefs.getInt(Constants.ID, 1)))
                 .child(studentChat.getStudentID());
 
@@ -89,10 +89,10 @@ public class ChatActivity extends AppCompatActivity {
 
     public void sendMessage(View view) {
         String message = messageEditText.getText().toString();
-        Chat chat = new Chat(message, getCurrentTimeStamp(), "student");
+        Chat chat = new Chat(message, getCurrentTimeStamp(), "teacher");
         String key = databaseReference.push().getKey();
-
         databaseReference.child(key).setValue(chat);
+        messageEditText.setText("");
     }
 
     private String getCurrentTimeStamp() {

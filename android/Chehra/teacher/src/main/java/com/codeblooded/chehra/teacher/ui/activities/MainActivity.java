@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements CourseFragment.On
                                     .replace(R.id.frameLayout, studentChatListFragment)
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                     .commit();
+                            break;
 
                         case R.id.bottom_nav_settings:
                             fm.beginTransaction()

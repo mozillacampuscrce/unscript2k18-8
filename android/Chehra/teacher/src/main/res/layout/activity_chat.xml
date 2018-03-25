@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.codeblooded.chehra.teacher.ui.activities.ChatActivity"
     android:paddingBottom="10dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
-    android:paddingTop="10dp">
+    android:paddingTop="10dp"
+    tools:context="com.codeblooded.chehra.teacher.ui.activities.ChatActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/messageListView"
@@ -49,4 +49,11 @@
 
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
 </RelativeLayout>

@@ -7,14 +7,34 @@ import android.os.Parcelable;
  * Created by Aashish Nehete on 24-Mar-18.
  */
 
-public class Chat implements Parcelable{
+public class Chat implements Parcelable {
 
-    private String msg,timestamp,sender;
+    public static final Creator<Chat> CREATOR = new Creator<Chat>() {
+        @Override
+        public Chat createFromParcel(Parcel source) {
+            return new Chat(source);
+        }
+
+        @Override
+        public Chat[] newArray(int size) {
+            return new Chat[size];
+        }
+    };
+    private String msg, timestamp, sender;
+
+    public Chat() {
+    }
 
     public Chat(String msg, String timestamp, String sender) {
         this.msg = msg;
         this.timestamp = timestamp;
         this.sender = sender;
+    }
+
+    protected Chat(Parcel in) {
+        this.msg = in.readString();
+        this.timestamp = in.readString();
+        this.sender = in.readString();
     }
 
     public String getMsg() {
@@ -41,7 +61,6 @@ public class Chat implements Parcelable{
         this.sender = sender;
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -53,22 +72,4 @@ public class Chat implements Parcelable{
         dest.writeString(this.timestamp);
         dest.writeString(this.sender);
     }
-
-    protected Chat(Parcel in) {
-        this.msg = in.readString();
-        this.timestamp = in.readString();
-        this.sender = in.readString();
-    }
-
-    public static final Creator<Chat> CREATOR = new Creator<Chat>() {
-        @Override
-        public Chat createFromParcel(Parcel source) {
-            return new Chat(source);
-        }
-
-        @Override
-        public Chat[] newArray(int size) {
-            return new Chat[size];
-        }
-    };
 }

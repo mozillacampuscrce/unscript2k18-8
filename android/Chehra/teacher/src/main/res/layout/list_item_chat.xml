@@ -8,7 +8,7 @@
     >
 
     <TextView
-        android:id="@+id/senderTextView"
+        android:id="@+id/messageTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/textviewstyle"
@@ -20,7 +20,7 @@
         android:layout_marginTop="5dp" />
 
     <TextView
-        android:id="@+id/receiverTextView"
+        android:id="@+id/responseTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
