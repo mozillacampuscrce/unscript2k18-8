@@ -38,7 +38,7 @@ public class TeacherChatListFragment extends Fragment {
     private RecyclerView chatsList;
     private TextView emptyView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private ArrayList<TeacherChat> studentChats;
+    private ArrayList<TeacherChat> teacherChats;
 
     public static TeacherChatListFragment newInstance() {
         // Required empty public constructor
@@ -53,36 +53,42 @@ public class TeacherChatListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_chat_list, container, false);
         chatsList = rootView.findViewById(R.id.recycler_view_chat_list);
         emptyView = rootView.findViewById(R.id.emptyView);
-        studentChats = new ArrayList<>();
+        teacherChats = new ArrayList<>();
+
+        //DummyData
+        for (int i = 1; i < 5; i++) {
+            teacherChats.add(new TeacherChat(String.valueOf(i), "Teacher" + i));
+        }
+        updateUI(teacherChats);
 
         swipeRefreshLayout = rootView.findViewById(R.id.swiperefresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getStudentsList();
+                getTeachersList();
             }
         });
         return rootView;
     }
 
-    private void updateUI(ArrayList<TeacherChat> studentChats) {
-        if (studentChats.size() != 0) {
+    private void updateUI(ArrayList<TeacherChat> teacherChats) {
+        if (teacherChats.size() != 0) {
             emptyView.setVisibility(View.GONE);
             chatsList.setLayoutManager(new LinearLayoutManager(getActivity()));
-            chatsList.setAdapter(new TeacherChatListAdapter(getActivity(), studentChats));
+            chatsList.setAdapter(new TeacherChatListAdapter(getActivity(), teacherChats));
         } else {
             emptyView.setVisibility(View.VISIBLE);
         }
     }
 
-    public void getStudentsList() {
+    public void getTeachersList() {
         SharedPreferences userPrefs = getActivity().getSharedPreferences(Constants.USER_PREFS, Context.MODE_PRIVATE);
         Header[] headers = new Header[]{new BasicHeader("Authorization", "JWT " + userPrefs.getString(Constants.TOKEN, ""))};
 
         //TODO: fetch properly
         RequestParams params = new RequestParams();
-        params.put("teacher_id", userPrefs.getInt(Constants.ID, 0));
-        RestClient.get("teacher/getStudents/", headers, params, new JsonHttpResponseHandler() {
+        params.put("student_id", userPrefs.getInt(Constants.ID, 0));
+        RestClient.get("student/getTeachers/", headers, params, new JsonHttpResponseHandler() {
             @Override
             public void onStart() {
                 super.onStart();
@@ -94,21 +100,21 @@ public class TeacherChatListFragment extends Fragment {
                 super.onSuccess(statusCode, headers, response);
                 swipeRefreshLayout.setRefreshing(false);
 
-                studentChats.clear();
+                teacherChats.clear();
 
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject item = response.getJSONObject(i);
-                        TeacherChat studentChat = new TeacherChat(
-                                item.getString("student_id"),
+                        TeacherChat teacherChat = new TeacherChat(
+                                item.getString("teacher_id"),
                                 item.getString("name")
                         );
-                        studentChats.add(studentChat);
+                        teacherChats.add(teacherChat);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-                updateUI(studentChats);
+                updateUI(teacherChats);
             }
 
             @Override

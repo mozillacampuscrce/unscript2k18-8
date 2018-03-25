@@ -61,6 +61,12 @@ public class StudentChatListFragment extends Fragment {
         emptyView = rootView.findViewById(R.id.emptyView);
         studentChats = new ArrayList<>();
 
+        //DummyData
+        for (int i = 1; i < 5; i++) {
+            studentChats.add(new StudentChat(String.valueOf(i), "Student" + i));
+        }
+        updateUI(studentChats);
+
         swipeRefreshLayout = rootView.findViewById(R.id.swiperefresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

@@ -25,6 +25,9 @@ public class Chat implements Parcelable {
     };
     private String msg, timestamp, sender;
 
+    public Chat() {
+    }
+
     public Chat(String msg, String timestamp, String sender) {
         this.msg = msg;
         this.timestamp = timestamp;

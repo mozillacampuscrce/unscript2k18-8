@@ -24,11 +24,11 @@ import java.util.ArrayList;
 public class TeacherChatListAdapter extends RecyclerView.Adapter<TeacherChatListAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<TeacherChat> studentChats;
+    private ArrayList<TeacherChat> teacherChats;
 
-    public TeacherChatListAdapter(Context context, ArrayList<TeacherChat> studentChats) {
+    public TeacherChatListAdapter(Context context, ArrayList<TeacherChat> teacherChats) {
         this.context = context;
-        this.studentChats = studentChats;
+        this.teacherChats = teacherChats;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class TeacherChatListAdapter extends RecyclerView.Adapter<TeacherChatList
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final TeacherChat chat = studentChats.get(position);
+        final TeacherChat chat = teacherChats.get(position);
         holder.nameTextView.setText(chat.getName());
 
         holder.parentView.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +47,7 @@ public class TeacherChatListAdapter extends RecyclerView.Adapter<TeacherChatList
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChatActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putParcelable(Constants.CHAT, chat);
+                bundle.putParcelable(Constants.TEACHER_CHAT, chat);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
@@ -56,7 +56,7 @@ public class TeacherChatListAdapter extends RecyclerView.Adapter<TeacherChatList
 
     @Override
     public int getItemCount() {
-        return studentChats.size();
+        return teacherChats.size();
     }
 
 

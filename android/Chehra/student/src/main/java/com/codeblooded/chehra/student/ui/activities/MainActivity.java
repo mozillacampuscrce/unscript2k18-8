@@ -23,6 +23,7 @@ import com.codeblooded.chehra.student.ui.fragments.CalendarFragment;
 import com.codeblooded.chehra.student.ui.fragments.CourseListFragment;
 import com.codeblooded.chehra.student.ui.fragments.CoursesFragment;
 import com.codeblooded.chehra.student.ui.fragments.PreferenceFragment;
+import com.codeblooded.chehra.student.ui.fragments.TeacherChatListFragment;
 import com.codeblooded.chehra.student.util.RestClient;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -59,10 +60,12 @@ public class MainActivity extends AppCompatActivity
         if (!preferences.getBoolean(Constants.LOGGED_IN, false)) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
-        } else if (!userPrefs.getBoolean(Constants.IS_VIDEO_ADDED, false)) {
-            startActivity(new Intent(MainActivity.this, FaceRecordActivity.class));
-            finish();
-        } else {
+        }
+//        else if (!userPrefs.getBoolean(Constants.IS_VIDEO_ADDED, false)) {
+//            startActivity(new Intent(MainActivity.this, FaceRecordActivity.class));
+//            finish();
+//        }
+        else {
             final FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction()
                     .replace(R.id.frameLayout, new CoursesFragment())
@@ -79,18 +82,43 @@ public class MainActivity extends AppCompatActivity
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                     .commit();
                             break;
+
                         case R.id.bottom_nav_calendar:
                             fm.beginTransaction()
                                     .replace(R.id.frameLayout, new CalendarFragment())
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                     .commit();
                             break;
-                        case R.id.bottom_nav_settings:
+
+                        case R.id.bottom_nav_results:
                             fm.beginTransaction()
-                                    .replace(R.id.frameLayout, new PreferenceFragment())
+                                    // TODO: Add results
+                                    .replace(R.id.frameLayout, new TeacherChatListFragment())
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                     .commit();
                             break;
+
+                        case R.id.bottom_nav_circular:
+                            fm.beginTransaction()
+                                    // TODO: Add circular
+                                    .replace(R.id.frameLayout, new TeacherChatListFragment())
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                                    .commit();
+                            break;
+
+                        case R.id.bottom_nav_chat:
+                            fm.beginTransaction()
+                                    .replace(R.id.frameLayout, new TeacherChatListFragment())
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                                    .commit();
+                            break;
+
+//                        case R.id.bottom_nav_settings:
+//                            fm.beginTransaction()
+//                                    .replace(R.id.frameLayout, new PreferenceFragment())
+//                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+//                                    .commit();
+//                            break;
                     }
                     return true;
                 }

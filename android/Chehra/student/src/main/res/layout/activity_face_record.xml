@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.codeblooded.chehra.student.ui.activities.FaceRecordActivity">
 
+
+    <!--
     <com.otaliastudios.cameraview.CameraView
         android:id="@+id/camera"
         android:layout_width="match_parent"
@@ -53,5 +55,5 @@
             android:visibility="gone" />
 
     </FrameLayout>
-
+-->
 </android.support.constraint.ConstraintLayout>
