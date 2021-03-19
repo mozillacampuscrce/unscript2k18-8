@@ -23,7 +23,7 @@ distro-info==0.17
 Django==2.0
 django-celery-results==1.0.1
 django-push-notifications==1.5.0
-djangorestframework==3.7.3
+djangorestframework==3.11.2
 djangorestframework-jwt==1.11.0
 dlib==19.8.1
 entrypoints==0.2.3
