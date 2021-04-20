@@ -83,7 +83,7 @@ pluggy==0.6.0
 prompt-toolkit==1.0.15
 protobuf==3.5.1
 ptyprocess==0.5.2
-py==1.5.2
+py==1.10.0
 pycrypto==2.6.1
 pycups==1.9.73
 Pygments==2.2.0
