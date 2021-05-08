@@ -28,7 +28,7 @@ djangorestframework-jwt==1.11.0
 dlib==19.8.1
 entrypoints==0.2.3
 enum34==1.1.6
-eventlet==0.22.0
+eventlet==0.31.0
 face-recognition==1.0.0
 face-recognition-models==0.3.0
 greenlet==0.4.12
